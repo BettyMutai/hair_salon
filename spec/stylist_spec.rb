@@ -53,4 +53,32 @@ describe(Stylist) do
       expect(test_stylist.clients()).to(eq([test_client,test_client2]))
     end
   end
+  describe("#update") do
+    it("lets the salon update stylists in the database") do
+      stylist = Stylist.new({:stylist_name => "George", :id => nil})
+      stylist.save()
+      stylist.update({:stylist_name => "Chris"})
+      expect(stylist.stylist_name()).to(eq("Chris"))
+    end
+  end
+  describe("#delete") do
+    it("lets you delete a stylist from the database") do
+      stylist = Stylist.new({:stylist_name => "George", :id => nil})
+      stylist.save()
+      stylist2 = Stylist.new({:stylist_name => "Chris", :id => nil})
+      stylist2.save()
+      stylist.delete()
+      expect(Stylist.all()).to(eq([stylist2]))
+    end
+    it("deletes a stylist's clients from the database") do
+      stylist = Stylist.new({:stylist_name => "George", :id => nil})
+      stylist.save()
+      client = Client.new({:client_name => "Paul", :contact => "0722456283", :stylist_id => stylist.id()})
+      client.save()
+      client2 = Client.new({:client_name => "Sam", :contact => "0755665566", :stylist_id => stylist.id()})
+      client2.save()
+      stylist.delete()
+      expect(Client.all()).to(eq([]))
+    end
+  end
 end
