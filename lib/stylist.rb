@@ -48,4 +48,15 @@ class Stylist
     stylist_clients
   end
 
+  define_method(:update) do |attributes|
+    @stylist_name = attributes.fetch(:stylist_name)
+    @id = self.id()
+    DB.exec("UPDATE stylists SET stylist_name = '#{@stylist_name}' WHERE id = #{@id};")
+  end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM clients WHERE stylist_id = #{self.id()};")
+  end
+
 end
