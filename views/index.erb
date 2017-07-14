@@ -5,11 +5,11 @@
 <form action="/stylists" method="post">
   <label for="stylist_name">Name of Stylist:</label>
   <input id="stylist_name" type="text" name="stylist_name">
-  <button type="submit">Add Stylist</button>
+  <button class="btn #607d8b blue-grey" type="submit" name="action">Add Stylist</button>
 </form>
 
 <p>Add clients to any stylist:</p>
-<form action="/clients" method="post">
+<form class="form-group" action="/clients" method="post">
   <label for="stylist_id">Select a Stylist</label>
     <select id='stylist_id' name='stylist_id' type='text'>
       <% @stylists.each() do |stylist| %>
@@ -23,7 +23,7 @@
   <label for="contact">Contact of Client:</label>
   <input id="contact" type="text" name="contact">
 
-  <button type="submit">Add Client</button>
+  <button class="btn #607d8b blue-grey" type="submit" name="action">Add Client</button>
 </form>
 
 <% if @stylists.any?() %>

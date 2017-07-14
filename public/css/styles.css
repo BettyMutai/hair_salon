@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald|Merriweather+Sans);
+body {
+  align-content: center;
+}
+nav {
+  box-shadow: 0px 1px #a8a8a8, 0px 2px #a8a8a8, 0px 3px #a8a8a8;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+}
+nav ul li a {
+  font-family: Oswald;
+  font-size: 2.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  padding: 1em .5em .45em .5em;
+  transition: .5s all ease-in;
+}
+nav ul li a:hover {
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: 0px 1px #303030, 0px 2px #303030, 0px 3px #303030;
+}
+
+.brand {
+  font-size: 3em;
+  margin-left: -.4em;
+  margin-right: .5em;
+  padding: 0;
+}
+.brand:hover {
+  background: 0;
+  color: #0a0a0a;
+  box-shadow: 0 0 #fff;
+}
+.current {
+  background: #0a0a0a;
+  color: white;
+  padding: 1em .5em .5em .5em;
+}
+.current:hover {
+  box-shadow: 0 0 #fff;
+}
+
+/* COLORING */
+#home:hover {
+  background: #ee0000;
+  text-shadow: 1px 1px #d60000, 2px 2px #d60000, 3px 3px #d60000;
+}
+#about:hover {
+  background: #83f52c;
+  text-shadow: 1px 1px #75dc27, 2px 2px #75dc27, 3px 3px #75dc27;
+}
+#clients:hover {
+  background: #05b8cc;
+  text-shadow: 1px 1px #04a5b7, 2px 2px #04a5b7, 3px 3px #04a5b7;
+}
+#contact:hover {
+  background: #cd00cd;
+  text-shadow: 1px 1px #b800b8, 2px 2px #b800b8, 3px 3px #b800b8;
+}
