@@ -33,10 +33,11 @@ require('capybara/rspec')
  end
  describe('adding clients to a stylist', {:type => :feature}) do
    it('allows the salon to add clients to a specific stylist') do
-     test_stylist = Stylist.new({:sylist_name => 'George', :id => nil})
+     test_stylist = Stylist.new({:stylist_name => 'George', :id => nil})
      test_stylist.save()
      visit('/')
      fill_in("Name of Client:", {:with => "Paul"})
+     fill_in("Contact of Client:", {:with => "0722456283"})
      click_button("Add Client")
      expect(page).to have_content("Clients")
    end
