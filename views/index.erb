@@ -1,39 +1,57 @@
-<h1>Hair Salon</h1>
+<div class="container-fluid">
+  <div class="row landing">
+    <p>Bee's Salon</p>
+  </div>
 
-<p>Add a new stylist:</p>
+  <!-- <div class="container"> -->
+  <div class="row main">
+    <div class="col-md-5 add">
+      <p class="title">Add a new stylist</p>
+      <form action="/stylists" method="post">
+        <label for="stylist_name">Name of Stylist:</label>
+        <input class="form-control" id="stylist_name" type="text" name="stylist_name">
+        <button type="submit" name="action">Add Stylist</button>
+      </form>
+    </div>
 
-<form action="/stylists" method="post">
-  <label for="stylist_name">Name of Stylist:</label>
-  <input id="stylist_name" type="text" name="stylist_name">
-  <button class="btn #607d8b blue-grey" type="submit" name="action">Add Stylist</button>
-</form>
+    <div class="col-md-7" id="assign">
+      <p class="title">Add clients to any stylist</p>
+      <form class="form-group" action="/clients" method="post">
 
-<p>Add clients to any stylist:</p>
-<form class="form-group" action="/clients" method="post">
-  <label for="stylist_id">Select a Stylist</label>
-    <select id='stylist_id' name='stylist_id' type='text'>
-      <% @stylists.each() do |stylist| %>
-        <option value="<%= stylist.id()%>"> <%= stylist.stylist_name() %> </option>
+      <label for="stylist_id">Select a Stylist</label><br>
+      <select id='stylist_id' name='stylist_id' type='text'>
+        <% @stylists.each() do |stylist| %>
+        <option value="<%= stylist.id()%>">
+          <%= stylist.stylist_name() %>
+        </option>
+        <% end %>
+      </select>
+        <h3 class="subtitle">Add a Client</h3>
+        <label for="client_name">Name of Client:</label>
+        <input class="form-control" id="client_name" type="text" name="client_name">
+
+        <label for="contact">Contact of Client:</label>
+        <input id="contact" type="text" class="form-control" name="contact">
+
+        <button type="submit" name="action">Add Client</button>
+      </form>
+    </div>
+  </div>
+  <!-- </div> -->
+
+  <div class="row stylists">
+    <% if @stylists.any?() %>
+    <p class="title">Click on a stylist to see their clients:</p>
+
+    <ul>
+      <% @stylists.each do |stylist| %>
+      <li>
+        <a href="/stylists/<%= stylist.id() %>"><%= stylist.stylist_name() %></a>
+      </li>
       <% end %>
-    </select>
-
-  <label for="client_name">Name of Client:</label>
-  <input id="client_name" type="text" name="client_name">
-
-  <label for="contact">Contact of Client:</label>
-  <input id="contact" type="text" name="contact">
-
-  <button class="btn #607d8b blue-grey" type="submit" name="action">Add Client</button>
-</form>
-
-<% if @stylists.any?() %>
-  <p>Click on a stylist to see their clients:</p>
-
-  <ul>
-    <% @stylists.each do |stylist| %>
-    <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.stylist_name() %></a></li>
-    <% end %>
-  </ul>
+    </ul>
   <% else %>
-  <p>There are no stylists yet!</p>
-  <% end %>
+    <p class="alert">There are no stylists yet!</p>
+    <% end %>
+  </div>
+</div>

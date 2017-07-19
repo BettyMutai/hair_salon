@@ -1,10 +1,10 @@
 <h1>Update the <%= @stylist.stylist_name() %> stylist </h1>
-
+<div class="row">
 <form action="/stylists/<%= @stylist.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
 
   <label for="stylist_name">Rename Stylist:</label>
-  <input id="stylist_name" type="text" name="stylist_name">
+  <input class="form-control" id="stylist_name" type="text" name="stylist_name">
 
   <button type="submit">Update</button>
 </form>
@@ -14,3 +14,4 @@
 
   <button type="submit">Delete Stylist</button>
 </form>
+</div>

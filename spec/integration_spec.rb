@@ -9,7 +9,7 @@ require('capybara/rspec')
     visit('/')
     fill_in('stylist_name', :with => 'George')
     click_button('Add Stylist')
-    expect(page).to have_content('Hair Salon')
+    expect(page).to have_content("Bee's Salon")
   end
  end
  describe('viewing all the stylists', {:type => :feature}) do
