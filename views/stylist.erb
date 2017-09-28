@@ -12,4 +12,11 @@
 <% end %>
 </div>
 
+
+<form action="/clients/<%= @client.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+
+  <button type="submit">Delete Client</button>
+</form>
+
 <p class="edit"><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.stylist_name() %> stylist</a></p>

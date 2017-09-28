@@ -53,3 +53,12 @@ require("sinatra")
     @stylists = Stylist.all()
     erb(:index)
   end
+
+
+  delete("/clients/:id") do
+    @client = Client.find(params.fetch("id").to_i())
+    @client.delete()
+    @clients = Client.all()
+    @stylist = Stylist.find(params.fetch('id').to_i)
+    redirect('/')
+  end
