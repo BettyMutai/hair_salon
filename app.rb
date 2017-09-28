@@ -17,6 +17,7 @@ require("sinatra")
     stylist = Stylist.new({:stylist_name => stylist_name, :id => nil})
     stylist.save()
     @stylists = Stylist.all()
+    @stylist.clients.all
     erb(:index)
   end
 
@@ -25,11 +26,16 @@ require("sinatra")
     erb(:stylist)
   end
 
+  get("/clients/:id") do
+    @client = Client.find(params.fetch("id").to_i())
+    erb(:stylist)
+  end
+
   post("/clients") do
     client_name = params.fetch("client_name")
     contact = params.fetch("contact")
     stylist_id = params.fetch("stylist_id").to_i()
-    client = Client.new({:client_name => client_name, :contact => contact, :stylist_id => stylist_id})
+    client = Client.new({:client_name => client_name, :contact => contact, :stylist_id => stylist_id, :id => nil})
     client.save()
     @stylist = Stylist.find(stylist_id)
     erb(:stylist)
@@ -54,11 +60,16 @@ require("sinatra")
     erb(:index)
   end
 
+  get("/clients/:id/edit") do
+    @stylist = Stylist.find(stylist_id)
+    @client = Client.find(params.fetch("id").to_i())
+    erb(:client_edit)
+  end
+
 
   delete("/clients/:id") do
     @client = Client.find(params.fetch("id").to_i())
     @client.delete()
     @clients = Client.all()
-    @stylist = Stylist.find(params.fetch('id').to_i)
-    redirect('/')
+    erb(:stylist)
   end

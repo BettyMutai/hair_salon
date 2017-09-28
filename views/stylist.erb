@@ -1,10 +1,11 @@
 <div class="row clients">
-<% if @stylist.clients().any?() %>
+<% if @stylist.clients.any?() %>
 <p class="title">Clients under stylist <%= @stylist.stylist_name() %></p>
 
 <ul>
   <% @stylist.clients().each() do |client| %>
-    <li><%= client.client_name() %> - <%= client.contact() %></li>
+    <li><%= client.client_name() %> - <%= client.contact() %>
+    </li>
   <% end %>
 </ul>
 <% else %>
@@ -12,11 +13,4 @@
 <% end %>
 </div>
 
-
-<form action="/clients/<%= @client.id() %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-
-  <button type="submit">Delete Client</button>
-</form>
-
-<p class="edit"><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.stylist_name() %> stylist</a></p>
+<p class="clients"><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.stylist_name() %> stylist</a></p>
